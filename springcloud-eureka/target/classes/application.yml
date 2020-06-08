@@ -1,0 +1,8 @@
+server:
+  port: 7001
+
+#Eureka设置
+eureka:
+  instance: # eureka实例定义
+    hostname: localhost # 定义 Eureka 实例所在的主机名称
+
