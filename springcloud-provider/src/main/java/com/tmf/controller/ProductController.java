@@ -3,6 +3,7 @@ package com.tmf.controller;
 import com.tmf.entity.Product;
 import com.tmf.service.IProductService;
 import javax.annotation.Resource;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 	@Resource
 	private IProductService iProductService;
+	@Resource
+	private DiscoveryClient client; // 进行Eureka的发现服务
 
 	@RequestMapping(value = "/get/{id}")
 	public Object get(@PathVariable("id") long id) {
@@ -32,5 +35,10 @@ public class ProductController {
 	@RequestMapping(value = "/list")
 	public Object list() {
 		return this.iProductService.list();
+	}
+
+	@RequestMapping("/discover")
+	public Object discover() {
+		return this.client; // 直接返回发现的服务信息
 	}
 }

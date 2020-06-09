@@ -1,5 +1,5 @@
 server:
-  port: 7001
+  port: 7003
 
 #Eureka设置
 eureka:
@@ -7,12 +7,12 @@ eureka:
     eviction-interval-timer-in-ms: 1000 #设置清理的间隔时间，而后这个时间使用的是毫秒单位（默认是60秒
     enable-self-preservation: false #是否要关闭保护模式
   instance: # eureka实例定义
-    hostname: eureka1 # 定义 Eureka 实例所在的主机名称
+    hostname: eureka3 # 定义 Eureka 实例所在的主机名称
   client:
     fetch-registry: false #是否要从注册中心获取信息
     register-with-eureka: false # 是否需要注册到Eureka
     service-url:
-      #defaultZone: http://admin:tmf@localhost:7001/eureka
+      #defaultZone: http://admin:enjoy@localhost:7001/eureka
       defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
 spring:
   security:
