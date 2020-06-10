@@ -1,16 +1,17 @@
 package com.tmf.config;
 
+import java.nio.charset.Charset;
+import java.util.Base64;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestTemplate;
 
-import java.nio.charset.Charset;
-import java.util.Base64;
-
 @Configuration
 public class RestConfig {
 	@Bean
+	@LoadBalanced // 可以让客户端拥有负载均衡的能力
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
@@ -24,4 +25,9 @@ public class RestConfig {
 		headers.set("Authorization", authHeader);
 		return headers;
 	}
+
+//	@Bean
+//	public IRule ribbonRule() { // 其中IRule就是所有规则的标准
+//		return new com.netflix.loadbalancer.RandomRule(); // Ribbon负载均衡算法随机的访问策略
+//	}
 }

@@ -29,6 +29,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
     </dependency>
+    <!--Eureka Client 客户端，把相关信息注入到注册中心 Eureka Server 依赖中包含有ribbon依赖-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

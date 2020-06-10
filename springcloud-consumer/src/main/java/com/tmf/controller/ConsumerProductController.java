@@ -3,6 +3,8 @@ package com.tmf.controller;
 import com.tmf.entity.Product;
 import java.util.List;
 import javax.annotation.Resource;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,14 +15,18 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/consumer")
 public class ConsumerProductController {
-	private static final String PRODUCT_GET_URL = "http://localhost:8080/prodcut/get/";
-	private static final String PRODUCT_LIST_URL = "http://localhost:8080/product/list/";
-	private static final String PRODUCT_ADD_URL = "http://localhost:8080/prodcut/add/";
+	// 通过eureka去调用
+	private static final String PRODUCT_GET_URL = "http://SPRINGCLOUD-PROVIDER/prodcut/get/";
+	private static final String PRODUCT_LIST_URL = "http://SPRINGCLOUD-PROVIDER/product/list/";
+	private static final String PRODUCT_ADD_URL = "http://SPRINGCLOUD-PROVIDER/prodcut/add/";
 	@Resource
 	private RestTemplate restTemplate;
 
 	@Resource
 	private HttpHeaders httpHeaders;
+
+	@Resource
+    LoadBalancerClient loadBalancerClient;
 
 	@RequestMapping("/product/get")
 	public Object getProduct(long id) {
@@ -30,6 +36,11 @@ public class ConsumerProductController {
 
 	@RequestMapping("/product/list")
 	public Object listProduct() {
+        ServiceInstance serviceInstance = this.loadBalancerClient.choose("SPRINGCLOUD-PROVIDER") ;
+        System.out.println(
+                "【*** ServiceInstance ***】host = " + serviceInstance.getHost()
+                        + "、port = " + serviceInstance.getPort()
+                        + "、serviceId = " + serviceInstance.getServiceId());
 		return restTemplate.exchange(PRODUCT_LIST_URL, HttpMethod.GET, new HttpEntity<>(httpHeaders), List.class)
 				.getBody();
 	}

@@ -11,7 +11,10 @@
   <modules>
     <module>springcloud-api</module>
     <module>springcloud-provider</module>
+    <module>springcloud-provider2</module>
+    <module>springcloud-provider3</module>
     <module>springcloud-consumer</module>
+    <module>springcloud-consumer-ribbon</module>
     <module>springcloud-security</module>
     <module>springcloud-eureka</module>
     <module>springcloud-eureka2</module>

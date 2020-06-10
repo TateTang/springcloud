@@ -46,7 +46,7 @@
       <artifactId>springcloud-security</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <!--Eureka Client 客户端 提供消费者信息,把相关信息注入到注册中西 Eureka Server-->
+    <!--Eureka Client 客户端 提供消费者信息,把相关信息注入到注册中心 Eureka Server-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
