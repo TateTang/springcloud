@@ -1,0 +1,43 @@
+server:
+  port: 8091
+mybatis:
+  mapper-locations: # 所有的mapper映射文件
+  - classpath:mapping/*.xml
+spring:
+  application:
+    name: springcloud-provider #必须保持一样
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 配置当前要使用的数据源的操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver # 配置MySQL的驱动程序类
+    url: jdbc:mysql://116.62.79.24:3306/springcloud2?serverTimezone=GMT%2B8 # 数据库连接地址
+    username: root # 数据库用户名
+    password: root # 数据库连接密码
+#  security:
+#    user:
+#      name: admin  # 认证用户名
+#      password: tmf  # 认证密码
+#      roles:
+#       - USER # 授权角色
+logging:
+  level:
+    com.tmf.mapper: debug
+
+# 配置注册中心所在位置
+eureka:
+  client: # 客户端进行Eureka注册中心 Eureka Server的配置
+    register-with-eureka: true # 服务提供者需要注册到注册中心
+    service-url:
+#      defaultZone: http://localhost:7001/eureka #
+      defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
+  instance:
+    instance-id: springcloud-provider2 # status中的路径问题
+    prefer-ip-address: true # status 显示ip地址
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 5  # 服务端如果现在超过了5秒的间隔（默认是90秒）
+
+info:
+  app.name: springcloud-provider2
+  company.name: tmf
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$
+

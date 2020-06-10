@@ -1,0 +1,10 @@
+server:
+  port: 80
+#Ribbon配置
+ribbon:
+  eureka:
+    enabled: false
+
+SPRINGCLOUD-PROVIDER:
+  ribbon:
+    listOfServers: http://localhost:8090,http://localhost:8091,http://localhost:8092 # 服务调用的地址：服务提供者地址
