@@ -15,10 +15,12 @@
     <module>springcloud-provider3</module>
     <module>springcloud-consumer</module>
     <module>springcloud-consumer-ribbon</module>
+    <module>springcloud-consumer-feign</module>
     <module>springcloud-security</module>
     <module>springcloud-eureka</module>
     <module>springcloud-eureka2</module>
     <module>springcloud-eureka3</module>
+    <module>springcloud-service</module>
   </modules>
 
   <properties>
@@ -59,6 +61,11 @@
       <dependency>
         <groupId>tmf</groupId>
         <artifactId>springcloud-security</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>tmf</groupId>
+        <artifactId>springcloud-service</artifactId>
         <version>1.0.0</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->

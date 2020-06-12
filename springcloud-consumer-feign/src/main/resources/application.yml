@@ -1,0 +1,8 @@
+server:
+  port: 80
+# Eureka客户端配置
+eureka:
+  client: # 客户端进行Eureka注册中心 Eureka Server的配置
+    register-with-eureka: false # 服务消费者不需要注册到Eureka
+    service-url:
+      defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka

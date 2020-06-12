@@ -3,7 +3,7 @@ import com.netflix.loadbalancer.IRule;
 import org.springframework.context.annotation.Bean;
 
 /**
- * 单个Ribbon负载均衡算法 配置，只对单个服务有效,Spring扫描不到
+ * 单个Ribbon负载均衡算法 配置，只对单个服务有效
  */
 public class RibbonConfig {
     @Bean
