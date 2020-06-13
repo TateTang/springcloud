@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(scanBasePackages = "com.tmf.*")
 @EnableEurekaClient // 代表是一个Eureka的客户端
-// @RibbonClient(name = "SPRINGCLOUD-PROVIDER" ,configuration =
+// @RibbonClient(name = "SPRINGCLOUD-PROVIDER", configuration =
 // RibbonConfig.class)
 // 扫描feign服务包
 @EnableFeignClients("com.tmf.service")

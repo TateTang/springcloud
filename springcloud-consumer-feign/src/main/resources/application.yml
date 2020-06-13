@@ -6,3 +6,19 @@ eureka:
     register-with-eureka: false # 服务消费者不需要注册到Eureka
     service-url:
       defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
+
+# 对feign接口进行压缩
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: # 可以被压缩的类型
+      - text/xml
+      - application/xml
+      - application/json
+      min-request-size: 2048 # 超过2048的字节进行压缩
+
+#日志处理
+logging:
+  level:
+    com.tmf.service: debug
