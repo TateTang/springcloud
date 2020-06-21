@@ -9,6 +9,8 @@ eureka:
 
 # 对feign接口进行压缩
 feign:
+  hystrix:
+    enabled: true # hystrix开启
   compression:
     request:
       enabled: true
