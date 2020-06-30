@@ -1,0 +1,13 @@
+server:
+ port: 9101
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
+
+#找到turbine的服务进行监控
+turbine:
+  app-config: SPRINGCLOUD-PROVIDER,SPRINGCLOUD-PROVIDER-USER-HYSTRIX
+  cluster-name-expression: new String("default")

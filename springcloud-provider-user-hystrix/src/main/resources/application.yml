@@ -1,0 +1,35 @@
+server:
+ port: 9090
+
+spring:
+ application:
+   name: springcloud-provider-user-hystrix
+
+
+logging:
+  level:
+    cn.enjoy.mapper: debug
+
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
+  instance:
+    instance-id: springcloud-provider-users
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 5  # 如果现在超过了5秒的间隔（默认是90秒）
+
+
+
+info:
+  app.name: springcloud-provider-users
+  company.name: tmf
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

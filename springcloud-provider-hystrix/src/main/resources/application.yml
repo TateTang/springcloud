@@ -30,13 +30,13 @@ eureka:
       #      defaultZone: http://localhost:7001/eureka #
       defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
   instance:
-    instance-id: springcloud-provider # status中的路径问题
+    instance-id: springcloud-provider-product # status中的路径问题
     prefer-ip-address: true # status 显示ip地址
     lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
     lease-expiration-duration-in-seconds: 5  # 服务端如果现在超过了5秒的间隔（默认是90秒）
 
 info:
-  app.name: springcloud-provider
+  app.name: springcloud-provider-product
   company.name: tmf
   build.artifactId: $project.artifactId$
   build.modelVersion: $project.modelVersion$

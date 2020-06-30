@@ -23,6 +23,8 @@
     <module>springcloud-eureka3</module>
     <module>springcloud-service</module>
     <module>springcloud-consumer-hystrix-dashboard</module>
+    <module>springcloud-provider-user-hystrix</module>
+    <module>springcloud-consumer-turbine</module>
   </modules>
 
   <properties>
