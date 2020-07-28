@@ -1,0 +1,41 @@
+server:
+  port: 9501
+
+#Eureka设置
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      defaultZone: http://admin:tmf@eureka1:7001/eureka,http://admin:tmf@eureka2:7002/eureka,http://admin:tmf@eureka3:7003/eureka
+    register-with-eureka: false #是否要注册到eureka中
+#  instance:
+#    instance-id: springcloud-zuul-gateway # status中的路径问题
+#    prefer-ip-address: true # status 显示ip地址
+#    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+#    lease-expiration-duration-in-seconds: 5 # 如果现在超过了5秒的间隔（默认是90秒）
+
+spring:
+  application:
+    name: springcloud-zuul-gateway
+  security:
+    user:
+      name: admin
+      password: tmf
+
+#zuul网关路由的配置
+#zuul:
+#  routes:
+#    springcloud-provider-users: /users-proxy/**
+#  #需要忽略的服务，代表eureka中所有的服务都不能访问
+#  ignored-services:
+#    "*"
+zuul:
+  routes:
+    users:
+      path: /users-proxy/**
+      serviceId: springcloud-provider-users
+    #绕过eureka直接进行调用
+    users2:
+      path: /users2-proxy/**
+      url: http://localhost:9090/
+  ignored-services:
+    "*"
